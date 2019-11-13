@@ -9,6 +9,7 @@
 # Imports
 ###################################
 
+import sys
 import csv
 from datetime import datetime
 import math
@@ -18,8 +19,8 @@ import math
 # Presets
 ###################################
 
-importname='Border_Crossing_Entry_Data.csv'
-exportname='report.csv'
+importname=sys.argv[1]
+exportname=sys.argv[2]
 
 
 
