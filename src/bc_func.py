@@ -1,17 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-
-    @author: Ted Yu
-    @version: v1.0
-    INSIGHT DATA ENGINEERING CODING CHALLENGE
-    Challenge:
-    The Bureau of Transportation Statistics regularly makes available data on the number of vehicles, 
-    equipment, passengers and pedestrians crossing into the United States by land.
-
-    For this challenge, the code calculates the total number of times vehicles, equipment, passengers 
-    and pedestrians cross the U.S.-Canadian and U.S.-Mexican borders each month. The code also calculates
-    the running monthly average of total number of crossings for that type of crossing and border.
-"""
+###################################
+# Definitions
+###################################
 
 import csv
 from datetime import datetime
@@ -35,7 +24,7 @@ def open_csv(importname):
     The sorting allows data from the same border, measure and date to be aggregated.  This allows the
     program to add the value of the aggregated rows together without having to save these values separately. 
     The date is changed to datetime so that it will not be ordered incorrectly.
-    parse: importname: the name of the input file, e.g. Border-Crossing-Entry-Data.csv
+    param: importname: the name of the input file, e.g. Border-Crossing-Entry-Data.csv
     output: list1:  A sort list of four columns of the input in the order of Border, Measure, Date, Value
     """
     list1=[]
@@ -62,7 +51,7 @@ def combine_value(list1):
     The code adds the values of the aggregated rows.  All of the rows of similar Border, Measure, and Date are then
     combined.  The resulting rows of the list are still aggregated by Border and Measure in preparation for the next
     function of calculating the average.
-    parse: list1: four column list of Border, Measure, Date, and Value that are ordered so that similar columns are aggregated.
+    param: list1: four column list of Border, Measure, Date, and Value that are ordered so that similar columns are aggregated.
     output: list2:  four column list of Border, Measure, Date, and Value where the rows of similar Border, Measure, and Date are combined.
     """
     Border=''
@@ -96,8 +85,8 @@ def calc_average(list2):
     The last step is the order the list by the desired output format by the order of Date, Value, Measure, and Border by reverse chronological
     order.
     
-    parse: list1: four column list of Border, Measure, Date, and Value that are ordered by date and aggregated by Border and Measure.
-    output: list2:  five column list of Border, Measure, Date, Value, and Average ordered by Border, Measure, and Date in that order.
+    param: list1: four column list of Border, Measure, Date, and Value that are ordered by date and aggregated by Border and Measure.
+    output: list2:  five column list of Border, Date, Measure, Value, and Average reversely ordered by Date, Value, Measure, and Date.
     """
     Border=''
     Measure=''
