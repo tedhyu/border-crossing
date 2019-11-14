@@ -5,10 +5,16 @@
 # Challenge:
 # The Bureau of Transportation Statistics regularly makes available data on the number of vehicles, 
 # equipment, passengers and pedestrians crossing into the United States by land.
-
+#
 # For this challenge, the code calculates the total number of times vehicles, equipment, passengers 
 # and pedestrians cross the U.S.-Canadian and U.S.-Mexican borders each month. The code also calculates
 # the running monthly average of total number of crossings for that type of crossing and border.
+#
+# The code tries to optimize efficiency by using only sorting to aggregate data of similar types.
+# The first step of the code sorts the list specifically by the order of Border, Medium, and Date.  This 
+# allows the simiar Border and Medium to be correctly aggregated, so that the program just has to do all the
+# calculations row by row without having to create new variables or additional lists.  The running average
+# and the combination of values are calculated down each row without having to invoke any additional list.
 ###################################
 
 
