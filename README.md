@@ -50,7 +50,7 @@ Last two arguments should be input and output files, respectively.
 
 Alternatively, you can execute `./run.sh` script to run the codes for a sample file and perform a unit test.
 
-### Prerequisites
+## Prerequisites
 
 This code was written for Python version 3. Specifically 3.7, but should be able to run in earlier versions. 
 
@@ -63,7 +63,7 @@ from datetime import datetime
 import math
 ```
 
-### Running it
+## Running it
 
 Input files ./input/Border-Crossing-Entry-Data must be present.
 
