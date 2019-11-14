@@ -1,6 +1,14 @@
 ###################################
-# Border Crossing aggregation demonstration
-# Ted Yu, 2019
+# @author: Ted Yu
+# @version: v1.0
+# INSIGHT DATA ENGINEERING CODING CHALLENGE
+# Challenge:
+# The Bureau of Transportation Statistics regularly makes available data on the number of vehicles, 
+# equipment, passengers and pedestrians crossing into the United States by land.
+
+# For this challenge, the code calculates the total number of times vehicles, equipment, passengers 
+# and pedestrians cross the U.S.-Canadian and U.S.-Mexican borders each month. The code also calculates
+# the running monthly average of total number of crossings for that type of crossing and border.
 ###################################
 
 
