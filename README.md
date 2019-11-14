@@ -49,3 +49,60 @@ python ./src/border-analytics.py ./input/Border-Crossing-Entry-Data.csv ./output
 Last two arguments should be input and output files, respectively.
 
 Alternatively, you can execute `./run.sh` script to run the codes for a sample file and perform a unit test.
+
+### Prerequisites
+
+This code was written for Python version 3. Specifically 3.7, but should be able to run in earlier versions. 
+
+The following libraries are use:
+
+```
+import sys
+import csv
+from datetime import datetime
+import math
+```
+
+### Running it
+
+Input files ./input/Border-Crossing-Entry-Data must be present.
+
+Run the ./run.sh shell command.
+
+The ./run.sh shell command passes two parameters to the Python program: the input file and the outuput file as follows:
+
+```
+python ./src/border-analytics.py ./input/Border-Crossing-Entry-Data.csv ./output/report.csv
+```
+
+This produces the ./output/report.csv
+```
+$ tail output/report.csv
+US-Canada Border,01/01/1996 12:00:00 AM,Pedestrians,18537,0
+US-Canada Border,01/01/1996 12:00:00 AM,Train Passengers,12803,0
+US-Mexico Border,01/01/1996 12:00:00 AM,Rail Containers Empty,12631,0
+US-Mexico Border,01/01/1996 12:00:00 AM,Rail Containers Full,12493,0
+US-Canada Border,01/01/1996 12:00:00 AM,Rail Containers Empty,9791,0
+US-Mexico Border,01/01/1996 12:00:00 AM,Buses,9474,0
+US-Canada Border,01/01/1996 12:00:00 AM,Buses,8399,0
+US-Canada Border,01/01/1996 12:00:00 AM,Trains,2440,0
+US-Mexico Border,01/01/1996 12:00:00 AM,Train Passengers,1000,0
+US-Mexico Border,01/01/1996 12:00:00 AM,Trains,644,0
+```
+
+## Running the tests
+
+The ./insight_testsuite contains test_n folders that house the 'input' and 'output' folders and run the Python code.  Each input folder contains the input file, 'Border-Crossing-Entry-Data.csv' that generates the output file 'report.csv'.  If after running the code, the file generates the same file as report.csv, the test passes, otherwise, the test fails. 
+
+To run the tests, call the ./run_test.sh shell command. Last line will indicate number of tests ran and who many passed.
+
+```
+$ cd insights_testsuites
+$ ./run_tests.sh
+...
+[PASS]: test_1
+[Thu 11 14 08:25:57 PDT 2019] 1 of 1 tests passed
+```
+## Author
+
+* **Ted Yu** - [Link to this repository](https://github.com/tedhyu/border-crossing)
