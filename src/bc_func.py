@@ -1,20 +1,39 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Nov 14 13:46:54 2019
 
-@author: Ted
+    @author: Ted Yu
+    @version: v1.0
+    INSIGHT DATA ENGINEERING CODING CHALLENGE
+    Challenge:
+    The Bureau of Transportation Statistics regularly makes available data on the number of vehicles, 
+    equipment, passengers and pedestrians crossing into the United States by land.
+
+    For this challenge, the code calculates the total number of times vehicles, equipment, passengers 
+    and pedestrians cross the U.S.-Canadian and U.S.-Mexican borders each month. The code also calculates
+    the running monthly average of total number of crossings for that type of crossing and border.
 """
+
 import csv
 from datetime import datetime
 import math
 
 def normal_round(n):
+    """
+    Rounds a number n so that 0.5 will always round up.
+    param: n: a float to be rounded
+    output n: a rounded integer
+    """
     #round function to make sure rounding goes up
     if n - math.floor(n) < 0.5:
         return math.floor(n)
     return math.ceil(n)
 
 def open_csv(importname):
+    """
+    Opens input csv with the csv module.  
+    parse: importname: the name of the input file, e.g. Border-Crossing-Entry-Data.csv
+    output n: a rounded integer
+    """
     list1=[]
     #list1 created from csv
     with open(importname) as csv_file:
@@ -29,8 +48,8 @@ def open_csv(importname):
                 newDate=datetime.strptime(row[4], '%m/%d/%Y %I:%M:%S %p')
                 list1.append((row[3],row[5],newDate,row[6]))
                 line_count += 1
-    #sort in order of Border, Measure, Date, Value
-    list1 = sorted(list1, key = lambda x: (x[0], x[1], x[2], x[3]))
+    #sort in order of Border, Measure, Date
+    list1 = sorted(list1, key = lambda x: (x[0], x[1], x[2]))
     return list1
 
 
