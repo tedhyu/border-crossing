@@ -21,7 +21,7 @@ def normal_round(n):
     """
     Rounds a number n so that 0.5 will always round up.
     param: n: a float to be rounded
-    output n: a rounded integer
+    output: n: a rounded integer
     """
     #round function to make sure rounding goes up
     if n - math.floor(n) < 0.5:
@@ -30,9 +30,13 @@ def normal_round(n):
 
 def open_csv(importname):
     """
-    Opens input csv with the csv module.  
+    The input csv is opened with the csv module.  Possible commas within quotation marks will not affect the code.  
+    The four columns are Border, Measure, Date, and Value.  They are sorted by Border -> Measure -> Date.  
+    The sorting allows data from the same border, measure and date to be aggregated.  This allows the
+    program to add the value of the aggregated rows together without having to save these values separately. 
+    The date is changed to datetime so that it will not be ordered incorrectly.
     parse: importname: the name of the input file, e.g. Border-Crossing-Entry-Data.csv
-    output n: a rounded integer
+    output: list1:  A sort list of four columns of the input in the order of Border, Measure, Date, Value
     """
     list1=[]
     #list1 created from csv
@@ -52,10 +56,15 @@ def open_csv(importname):
     list1 = sorted(list1, key = lambda x: (x[0], x[1], x[2]))
     return list1
 
-
-
-
 def combine_value(list1):
+    """
+    The program runs through the rows of a list that has aggregated rows of identical Border, Measure, and Date.  
+    The code adds the values of the aggregated rows.  All of the rows of similar Border, Measure, and Date are then
+    combined.  The resulting rows of the list are still aggregated by Border and Measure in preparation for the next
+    function of calculating the average.
+    parse: list1: four column list of Border, Measure, Date, and Value that are ordered so that similar columns are aggregated.
+    output: list2:  four column list of Border, Measure, Date, and Value where the rows of similar Border, Measure, and Date are combined.
+    """
     Border=''
     Date=''
     Measure=''
@@ -77,7 +86,19 @@ def combine_value(list1):
     return list2
             
 def calc_average(list2):
-    #list3 creates running total by previous month when Border and Measure are the same, creating "Average"
+    """
+    The program runs through the rows of a list that has aggregated rows of identical Border and Measure.  The aggregated rows are also
+    ordered sequentially from earliest to latest date.  As the program processes each row, it will keep a running total of the value
+    for a unique Border and Measure.  If the next row has the same Border and measure, the program will add the newest value to the running
+    total.  It will then display the average of the running total divided by the total months.  If there is no running total, it will enter
+    a value of zero for the average.  
+    
+    The last step is the order the list by the desired output format by the order of Date, Value, Measure, and Border by reverse chronological
+    order.
+    
+    parse: list1: four column list of Border, Measure, Date, and Value that are ordered by date and aggregated by Border and Measure.
+    output: list2:  five column list of Border, Measure, Date, Value, and Average ordered by Border, Measure, and Date in that order.
+    """
     Border=''
     Measure=''
     list3=[]
