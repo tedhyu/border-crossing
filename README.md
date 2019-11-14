@@ -23,16 +23,29 @@ US-Mexico Border,02/01/2019 12:00:00 AM,Pedestrians,172163,56810
 US-Canada Border,02/01/2019 12:00:00 AM,Truck Containers Empty,1319,0
 US-Mexico Border,01/01/2019 12:00:00 AM,Pedestrians,56810,0
 ```
-## Summary
-The `pharmacy_counting.py` script reads the input file line by line and creates two dictionaries `drug_cost` (i.e, `{drug_name:total_cost, }`) to keep track of drug costs and `doctor_names` (i.e., `{drug_name:unique_doctor_names}`) to keep track of unique doctor names for each drug. Consequently, the dictionary `drug_cost` is sorted by the value (and key if there is a tie) and written in the desired comma separated output format. This script also performs a basic data cleaning such as getting rid of commas inside quotations. This ensures each row has 5 columns when split on commas.
+
+## Getting Started
+
+File structure is as follows:
+
+./input/Border-Crossing-Entry-Data.csv <-- input file containing raw border crossing data
+
+./output/report.csv <-- output file containing Port, Month, Measure, Crossing, and Running average for each month.
+
+./run.sh <-- run this file to run python script
+
+./src/border-analytics.py <-- main Python code to read input and generate output file.
+
+./src/bc-func.py <-- build functions for the border-analytics code
+
+./insight_testsuite/run_tests.sh <-- run this to run tests on this folder
 
 ## Instructions
 To execute the script move to the main directory of the project and run the following in the terminal:
 
 ```
-python ./src/pharmacy_counting.py ./input/itcont.txt ./output/top_cost_drug.txt
+python ./src/border-analytics.py ./input/Border-Crossing-Entry-Data.csv ./output/report.csv
 ```
-
 Last two arguments should be input and output files, respectively.
 
 Alternatively, you can execute `./run.sh` script to run the codes for a sample file and perform a unit test.
